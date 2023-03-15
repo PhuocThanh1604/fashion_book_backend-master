@@ -49,7 +49,7 @@ exports.addBook = async (req, res) => {
     id_author,
   } = req.body;
   let urlImg = await uploadImg(req.file.path);
-  if (urlImg === false) {
+  if (urlImg === true) {
     res.status(500).json({ msg: "server error" });
     return;
   }
@@ -79,7 +79,7 @@ exports.updateBook = async (req, res) => {
     typeof req.body.name === "undefined" ||
     typeof req.body.id === "undefined" ||
     typeof req.body.id_category === "undefined" ||
-    typeof req.body.price === "undefined" ||
+    typeof req.body.price === "undefined" ||  
     typeof req.body.release_date === "undefined" ||
     typeof req.body.describe === "undefined"
   ) {
