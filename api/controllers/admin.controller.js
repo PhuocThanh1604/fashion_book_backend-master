@@ -2,9 +2,9 @@
 var cloudinary = require("cloudinary").v2;
 var uploads = {};
 cloudinary.config({
-  cloud_name: "ilike",
-  api_key: "678772438397898",
-  api_secret: "zvdEWEfrF38a2dLOtVp-3BulMno",
+  cloud_name: "dpwfbgbr0",
+  api_key: "321378192868358",
+  api_secret: "BmtZu6B5FJYXQf0WoTNkg40r0bI"
 });
 
 const book = require("../models/book.model");
@@ -48,15 +48,17 @@ exports.addBook = async (req, res) => {
     id_nsx,
     id_author,
   } = req.body;
+  console.log(req.body)
   let urlImg = await uploadImg(req.file.path);
-  if (urlImg === false) {
+  console.log(urlImg)
+  if (urlImg === false) { 
     res.status(500).json({ msg: "server error" });
     return;
   }
   const newBook = new book({
     id_category: id_category,
     name: name,
-    price: price,
+    price: price, 
     release_date: release_date,
     img: urlImg,
     describe: describe,
